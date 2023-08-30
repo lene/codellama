@@ -1,3 +1,16 @@
+# Usage example:
+# $ terraform apply --auto-approve \
+#                   -var instance_type=t2.small \
+#                   -var instance_max_price=0.07 \
+#                   -var root_volume_size=12
+# Output example:
+# spot_instance_public_dns = "ec2-3-75-189-148.eu-central-1.compute.amazonaws.com"
+# spot_instance_public_ip = "3.75.189.148"
+# Log in with:
+# $ ssh -o StrictHostKeyChecking=no \
+#       -i ~/.ssh/frankfurt.pem \
+#       ubuntu@ec2-3-75-189-148.eu-central-1.compute.amazonaws.com
+
 terraform {
   required_providers {
     aws = {
@@ -30,7 +43,7 @@ resource "aws_instance" "spot_instance" {
   }
   instance_type = var.instance_type
   root_block_device {
-    volume_size = 12
+    volume_size = var.root_volume_size
   }
   key_name      = var.ssh_key_name
   tags = {
