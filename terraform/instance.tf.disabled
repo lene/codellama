@@ -1,0 +1,23 @@
+resource "aws_instance" "my_instance" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.ssh_key_name
+
+  tags = {
+    Name = var.instance_name
+  }
+  private_dns_name_options {
+    enable_resource_name_dns_a_record = true
+  }
+  user_data = file("mount_ebs_volume.sh")
+}
+
+output "instance_public_ip" {
+  description = "Public IP of EC2 instance"
+  value       = aws_instance.my_instance.public_ip
+}
+
+output "instance_public_dns" {
+  description = "Public DNS name of EC2 instance"
+  value       = aws_instance.my_instance.public_dns
+}
