@@ -1,0 +1,47 @@
+{
+  "MaxCount": 1,
+  "MinCount": 1,
+  "ImageId": "ami-01dd271720c1ba44f",
+  "InstanceType": "t3.xlarge",
+  "InstanceInitiatedShutdownBehavior": "stop",
+  "KeyName": "ireland",
+  "EbsOptimized": true,
+  "BlockDeviceMappings": [
+    {
+      "DeviceName": "/dev/sdb",
+      "Ebs": {
+        "Encrypted": false,
+        "DeleteOnTermination": false,
+        "Iops": 3000,
+        "VolumeSize": 200,
+        "VolumeType": "gp3",
+        "Throughput": 125
+      }
+    }
+  ],
+  "NetworkInterfaces": [
+    {
+      "AssociatePublicIpAddress": true,
+      "DeviceIndex": 0,
+      "Groups": [
+        "<groupId of the new security group created below>"
+      ]
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "Llama"
+        }
+      ]
+    }
+  ],
+  "PrivateDnsNameOptions": {
+    "HostnameType": "ip-name",
+    "EnableResourceNameDnsARecord": true,
+    "EnableResourceNameDnsAAAARecord": false
+  }
+}
