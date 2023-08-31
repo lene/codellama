@@ -29,7 +29,7 @@ def main(
     )
 
     while prompt != 'exit':
-        prompt = input(f'Enter a task to be solved in {language} ("exit" to exit):')
+        prompt = input(f'Enter a task to be solved in {language} ("exit" to exit): ')
         instructions = [
             [
                 {
@@ -64,7 +64,7 @@ def main(
             print("\n==================================\n")
         print(
             f'''
-    Answered in {time() - start_time:.2f}s, {start.elapsed_time(end):.2f}s in torch 
+    Answered in {time() - start_time:.2f}s, {start.elapsed_time(end) / 1000:.2f}s in torch 
     with {torch.cuda.utilization()}% GPU utilization.'''
         )
 
