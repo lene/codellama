@@ -42,6 +42,7 @@ resource "aws_instance" "spot_instance" {
     market_type = "spot"
   }
   instance_type = var.instance_type
+  subnet_id = var.subnet_id
   root_block_device {
     volume_size = var.root_volume_size
   }

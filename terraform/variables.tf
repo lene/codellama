@@ -27,3 +27,8 @@ variable "root_volume_size" {
   type = number
   default = 12
 }
+
+variable "subnet_id" {
+  type = string
+  default = "subnet-11abe079"
+}
